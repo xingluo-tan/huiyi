@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 手机适配标准视口 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>星落的小屋</title>
     <style>
         * {
@@ -15,17 +16,20 @@
         html,
         body {
             width: 100%;
-            height: 100%;
-            overflow: hidden;
+            min-height: 100vh;
+            /* 取消禁止滚动，手机可以正常滑动 */
+            overflow-x: hidden;
+            overflow-y: auto;
             font-family: system-ui, sans-serif;
         }
 
-        /* 最外层全屏背景 —— 丝滑、不卡、手机适配 */
+        /* 全屏背景 优化GitHub不卡顿 */
         .wrap {
             width: 100%;
-            height: 100vh;
+            min-height: 100vh;
             background: url("tuku/yinghua.gif") no-repeat center center;
             background-size: cover;
+            /* 关键：不用fixed，大幅减少卡顿 */
             background-attachment: scroll;
             position: relative;
             padding: 15px;
@@ -43,16 +47,17 @@
             z-index: 99;
         }
 
-        /* 左侧导航 */
+        /* 左侧导航 适配手机缩小宽度 */
         .nav {
             position: absolute;
             top: 70px;
             left: 20px;
-            width: 90px;
+            width: 80px;
             background: rgba(255, 255, 255, 0.2);
             border-radius: 12px;
             backdrop-filter: blur(6px);
-            padding: 15px 10px;
+            -webkit-backdrop-filter: blur(6px);
+            padding: 15px 8px;
             display: flex;
             flex-direction: column;
             gap: 12px;
@@ -64,15 +69,15 @@
             color: #0066cc;
             text-decoration: none;
             font-weight: 500;
+            font-size: 14px;
         }
 
-        /* 右侧内容区域 —— 手机完美适配 */
+        /* 右侧内容区域 自适应留边 */
         .right {
             position: absolute;
             top: 70px;
-            left: 125px;
-            right: 20px;
-            bottom: 20px;
+            left: 110px;
+            right: 15px;
             display: flex;
             flex-direction: column;
             gap: 10px;
@@ -80,13 +85,14 @@
             z-index: 10;
         }
 
-        /* 头像盒子 —— 右上居中 */
+        /* 头像盒子 上方居中 */
         .avatar {
             width: 100px;
             height: 100px;
             background: rgba(255, 255, 255, 0.2);
             border-radius: 12px;
             backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -100,12 +106,13 @@
             object-fit: cover;
         }
 
-        /* 内容盒子 */
+        /* 内容盒子 宽度自适应 */
         .box {
             width: 100%;
             background: rgba(255, 255, 255, 0.2);
             border-radius: 12px;
             backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
             padding: 15px;
             text-align: center;
         }
@@ -113,6 +120,7 @@
         .box p {
             margin-bottom: 8px;
             color: #222;
+            font-size: 15px;
         }
 
         .box a {
@@ -120,11 +128,24 @@
             text-decoration: none;
             margin: 5px 0;
             display: block;
+            font-size: 15px;
         }
 
         .name {
             color: #6dd1ce;
             font-weight: bold;
+        }
+
+        /* 小屏幕手机适配 */
+        @media (max-width: 480px) {
+            .nav {
+                width: 70px;
+                left: 15px;
+            }
+
+            .right {
+                left: 95px;
+            }
         }
     </style>
 </head>
@@ -150,7 +171,8 @@
             </div>
             <div class="box">
                 <p>我的链接</p>
-                <a href="https://www.douyin.com/user/self?from=qrcode&account=93589215007" target="_blank">抖音</a>
+                <!-- 已换成不会跳下载的抖音正规主页链接 -->
+                <a href="https://www.douyin.com/93589215007" target="_blank">抖音</a>
                 <a href="https://space.bilibili.com/286111015" target="_blank">bilibili</a>
             </div>
         </div>
