@@ -1,50 +1,162 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-   <title>星落的个人介绍</title>
-   <style>
-       * {
-           margin: 0;
-           padding: 0;
-           box-sizing: border-box;
-       }
-       body {
-           font-size: 16px;
-           line-height: 1.6;
-           word-wrap: break-word;
-       }
-       img {
-           max-width: 100%;
-           height: auto;
-       }
-   </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>星落的个人介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-size: 16px;
+            line-height: 1.6;
+            overflow: hidden;
+        }
+
+        /* 最外层全屏大背景盒子，樱花GIF完整铺满，底层显示，不会被遮挡 */
+        .wrap-box {
+            width: 100vw;
+            height: 100vh;
+            background: url("tuku/yinghua.gif") no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed;
+            position: relative;
+            padding: 20px;
+            z-index: 1;
+        }
+
+        /* 左上角文字，浮在背景上层 */
+        .box-label {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            font-size: 22px;
+            font-weight: bold;
+            color: #ffffff;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+            z-index: 10;
+        }
+
+        /* 左侧导航：从顶部往下排，浮在背景上 */
+        .nav-box {
+            position: absolute;
+            left: 30px;
+            top: 80px;
+            width: 120px;
+            background-color: rgba(234, 231, 231, 0.25);
+            border-radius: 12px;
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding: 20px 10px;
+            align-items: center;
+            z-index: 10;
+        }
+
+        /* 右下总容器，浮在背景上层，不遮挡背景GIF */
+        .right-container {
+            position: absolute;
+            right: 40px;
+            top: 80px;
+            bottom: 40px;
+            width: calc(100% - 200px);
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: flex-start;
+            justify-content: flex-start;
+            z-index: 10;
+        }
+
+        /* 头像盒子：在右侧容器最上方，水平居中，内部图片居中 */
+        .avatar-box {
+            width: 120px;
+            height: 120px;
+            background-color: rgba(234, 231, 231, 0.25);
+            border-radius: 12px;
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            align-self: center;
+        }
+
+        /* 内容盒子，磨砂半透明，透出背景樱花 */
+        .item-box {
+            width: 100%;
+            background-color: rgba(234, 231, 231, 0.25);
+            border-radius: 12px;
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            padding: 20px 15px;
+            text-align: center;
+        }
+
+        img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+        }
+
+        a {
+            display: block;
+            margin: 8px 0;
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        p {
+            margin-bottom: 12px;
+        }
+
+        .name-text {
+            color: rgb(109, 209, 206);
+            font-weight: bold;
+        }
+    </style>
 </head>
+
 <body>
-    <div style="background-color: #eae7e7ad;
-    text-align: center;
-    padding: 20px 0;">
-    <img src="tuku/touxiang.jpeg" alt="头像" width="80" height="80" style="border-radius: 50%;">
-    </div>
+    <!-- 最外层全屏背景盒子 -->
+    <div class="wrap-box">
+        <!-- 左上角标题 -->
+        <div class="box-label">星落的小屋</div>
 
-    <div style="max-width: 800px;
-    margin: 30px auto;
-    padding: 0 15px;
-    line-height: 1.7;
-    font-size: 16px;">
-        <p style="margin-bottom: 12px;">大家好呀，我是<b style="color: rgb(109, 209, 206);">星落</b>。欢迎来到我的个人介绍。</p>
-        <p style="margin-bottom: 12px;">我是一个懒人，喜欢打游戏，更喜欢和朋友一起打游戏。对于我自己的人生还没有一个具体的规划，趁着这段迷茫的时间，我想做点东西留下和大家之间的回忆。</p>
-        <p style="margin-bottom: 12px;">不知道写啥，先空着把，后面再补充，下面是我的抖音和b站账号，嘻嘻。</p>
-    </div>
+        <!-- 左侧导航栏 -->
+        <div class="nav-box">
+            <a href="#">首页</a>
+            <a href="#">关于我</a>
+            <a href="#">联系方式</a>
+        </div>
 
-    <div style="background-color: #eae7e7ad;
-    text-align: center;
-    padding: 25px 0;
-    font-size: 16px;">
-        <p style="margin-bottom:10px;">我的链接</p>
-        <a href="snssdk1128://user/profile/413836291880887">抖音</a>
-        <a href="https://space.bilibili.com/286111015" target="_blank" style="display:block;">bilibili</a>
+        <!-- 右侧内容容器 -->
+        <div class="right-container">
+            <div class="avatar-box">
+                <img src="tuku/touxiang.jpeg" alt="头像">
+            </div>
+            <div class="item-box">
+                <p>大家好呀，我是<span class="name-text">星落</span>。欢迎来到我的个人介绍。</p>
+                <p>我是一个懒人，喜欢打游戏，更喜欢和朋友一起打游戏。对于我自己的人生还没有一个具体的规划，趁着这段迷茫的时间，我想做点东西留下和大家之间的回忆。</p>
+                <p>不知道写啥，先空着把，后面再补充，下面是我的抖音和b站账号，嘻嘻。</p>
+            </div>
+            <div class="item-box">
+                <p>我的链接</p>
+                <div>
+                    <a href="https://www.douyin.com/user/self?from=qrcode&account=93589215007" target="_blank">抖音</a>
+                </div>
+                <a href="https://space.bilibili.com/286111015" target="_blank">bilibili</a>
+            </div>
+        </div>
     </div>
 </body>
+
 </html>
